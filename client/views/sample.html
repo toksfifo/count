@@ -1,0 +1,16 @@
+<!-- anything typed here is magically saved to firebase -->
+<input type="text" ng-model='data.text'>
+
+<!-- all changes from firebase magically appear here -->
+<h1>You said: {{ data.text }}</h1>
+
+<ul>
+	<li ng-repeat='message in messages'>
+		{{ message.text }}
+	</li>
+</ul>
+
+<form ng-submit='addMessage(newMessageText)'>
+	<input ng-model='newMessageText'>
+	<button type="submit">add message</button>
+</form>
