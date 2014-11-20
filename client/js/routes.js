@@ -1,13 +1,13 @@
-sample_app.config(['$routeProvider', function($routeProvider) {
+count_app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/', {
-			templateUrl: 'client/views/sample.html',
+			templateUrl: 'client/views/sample.html', // todo remove sample.html
 			controller: ''
 		}).
-		// when('/users/:userName', {
-		// 	templateUrl: 'client/views/todos.html',
-		// 	controller: 'SampleController'
-		// }).
+		when('/cards', {
+			templateUrl: 'client/views/cards.html',
+			controller: 'CardCtrl'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});
