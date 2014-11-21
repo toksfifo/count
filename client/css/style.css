@@ -1,0 +1,38 @@
+/*todo*/
+/*.card { 
+	background-image: url('../img/cards.png');
+	height: 243px;
+	width: 167.5px;
+}
+
+.card.a.c {
+	background-position: 0px 0px;
+}
+
+.card.a.d {
+	background-position: 0px -243px;
+}
+
+.card.a.h {
+	background-position: 0px -486px;
+}
+
+.card.a.s {
+	background-position: 0px -729px;
+}
+
+.card.k.c {
+	background-position: -2010px 0px;
+}
+
+.card.k.d {
+	background-position: -2010px -243px;
+}
+
+.card.k.h {
+	background-position: -2010px -486px;
+}
+
+.card.k.s {
+	background-position: -2010px -729px;
+}*/

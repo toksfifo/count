@@ -16,7 +16,6 @@ count_app.controller('SampleCtrl', ['$scope', '$firebase', function($scope, $fir
 			{text: text}
 		);
 	}
-
 }]);
 
 // todo check if I need $firebase for card controller
@@ -70,10 +69,14 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', function($scope, $fireb
 	$scope.cards;
 	$scope.current_deal = [];
 
+	$scope.create_deck = function(number_of_decks) {
+		$scope.deck = new Deck(number_of_decks);
+		$scope.cards = $scope.deck.cards;
+	};
+
 	$scope.create_shuffled_deck = function(number_of_decks) {
 		$scope.deck = new Deck(number_of_decks);
 		$scope.cards = $scope.deck.shuffle();
-
 	};
 
 	$scope.deal = function(number_of_cards) {
