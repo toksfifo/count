@@ -66,8 +66,55 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', function($scope, $fireb
 		};
 	}
 
-	var deck = new Deck(1);
-	$scope.cards = deck.shuffle();
+	$scope.deck;
+	$scope.cards;
+	$scope.current_deal = [];
+
+	$scope.create_shuffled_deck = function(number_of_decks) {
+		$scope.deck = new Deck(number_of_decks);
+		$scope.cards = $scope.deck.shuffle();
+
+	};
+
+	$scope.deal = function(number_of_cards) {
+		// var current_deal = [];
+		for (var i=0; i<number_of_cards; i++) {
+			$scope.current_deal.push($scope.cards.pop());
+		}
+		return $scope.current_deal;
+		// todo focus on count_guess
+	};
+
+	$scope.verify_count = function(guess) {
+		if (guess == $scope.get_count($scope.current_deal)) { // important comparison, since guess is a string
+			$scope.count_right = true;
+			// todo try to set timeout here
+			// $timeout(function() {$scope.count_right = false;}, 1000);
+			$scope.count_wrong = false;
+		}
+		else {
+			$scope.count_right = false;
+			$scope.count_wrong = true;
+		}
+	};
+
+	$scope.count_right = false;
+	$scope.count_wrong = false;
+
+	$scope.get_count = function(cards) {
+		var count = 0;
+		for (var i=0; i<cards.length; i++) {
+			count += $scope.convert_bj_value_to_count(cards[i].bj_value);
+		}
+		return count;
+	};
+
+	$scope.convert_bj_value_to_count = function(bj_value) {
+		// todo === 1
+		if (bj_value === 10 || bj_value === 1) return -1;
+		else if (bj_value <= 6) return 1;
+		else return 0;
+	};
 
 
 }]);
