@@ -19,7 +19,7 @@ count_app.controller('SampleCtrl', ['$scope', '$firebase', function($scope, $fir
 }]);
 
 // todo check if I need $firebase for card controller
-count_app.controller('CardCtrl', ['$scope', '$firebase', function($scope, $firebase) {
+count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($scope, $firebase, $interval) {
 	var ten_cards = [10, 'j', 'q', 'k'];
 
 	var full_deck = [new Card(2,'c'),new Card(2,'d'), new Card(2,'h'), new Card(2,'s'), new Card(3,'c'), new Card(3,'d'), new Card(3,'h'), new Card(3,'s'), new Card(4,'c'), new Card(4,'d'), new Card(4,'h'), new Card(4,'s'), new Card(5,'c'), new Card(5,'d'), new Card(5,'h'), new Card(5,'s'), new Card(6,'c'), new Card(6,'d'), new Card(6,'h'), new Card(6,'s'), new Card(7,'c'), new Card(7,'d'), new Card(7,'h'), new Card(7,'s'), new Card(8,'c'), new Card(8,'d'), new Card(8,'h'), new Card(8,'s'), new Card(9,'c'), new Card(9,'d'), new Card(9,'h'), new Card(9,'s'), new Card(10,'c'), new Card(10,'d'), new Card(10,'h'), new Card(10,'s'), new Card('j','c'), new Card('j','d'), new Card('j','h'), new Card('j','s'), new Card('q','c'), new Card('q','d'), new Card('q','h'), new Card('q','s'), new Card('k','c'), new Card('k','d'), new Card('k','h'), new Card('k','s'), new Card('a','c'), new Card('a','d'), new Card('a','h'), new Card('a','s')];
@@ -80,12 +80,21 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', function($scope, $fireb
 	};
 
 	$scope.deal = function(number_of_cards) {
-		// var current_deal = [];
-		for (var i=0; i<number_of_cards; i++) {
-			$scope.current_deal.push($scope.cards.pop());
+		if ($scope.cards.length) {
+			for (var i=0; i<number_of_cards; i++) {
+				$scope.current_deal.push($scope.cards.pop());
+			}
+			return $scope.current_deal;
+			// todo focus on count_guess
 		}
-		return $scope.current_deal;
-		// todo focus on count_guess
+	};
+
+	$scope.deal_continuous = function(number_of_cards_per_time) {
+		// $scope.deal(number_of_cards_per_time);
+		$scope.deal(number_of_cards_per_time);
+		$interval(function() {
+			$scope.deal(number_of_cards_per_time);
+		}, 500, $scope.cards.length);
 	};
 
 	$scope.verify_count = function(guess) {

@@ -1,0 +1,232 @@
+$card_height: 243.5px/2;
+$card_width: 167.5px/2;
+
+@mixin back_pos($width, $height) {
+	background-position: (-$card_width * $width) (-$card_height * $height);
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+.card { 
+	background-image: url('../img/cards_noborder_small.png');
+	height: $card_height;
+	width: $card_width;
+	border: 1px solid black;
+	@include border-radius(5px);
+}
+
+.card.back {
+	@include back_pos(2,4);
+}
+
+.card.v_a.c {
+	@include back_pos(0,0);
+}
+
+.card.v_a.d {
+	@include back_pos(0,1);
+}
+
+.card.v_a.h {
+	@include back_pos(0,2);
+}
+
+.card.v_a.s {
+	@include back_pos(0,3);
+}
+
+.card.v_k.c {
+	@include back_pos(12,0);
+}
+
+.card.v_k.d {
+	@include back_pos(12,1);
+}
+
+.card.v_k.h {
+	@include back_pos(12,2);
+}
+
+.card.v_k.s {
+	@include back_pos(12,3);
+}
+
+.card.v_q.c {
+	@include back_pos(11,0);
+}
+
+.card.v_q.d {
+	@include back_pos(11,1);
+}
+
+.card.v_q.h {
+	@include back_pos(11,2);
+}
+
+.card.v_q.s {
+	@include back_pos(11,3);
+}
+
+.card.v_j.c {
+	@include back_pos(10,0);
+}
+
+.card.v_j.d {
+	@include back_pos(10,1);
+}
+
+.card.v_j.h {
+	@include back_pos(10,2);
+}
+
+.card.v_j.s {
+	@include back_pos(10,3);
+}
+
+.card.v_10.c {
+	@include back_pos(9,0);
+}
+
+.card.v_10.d {
+	@include back_pos(9,1);
+}
+
+.card.v_10.h {
+	@include back_pos(9,2);
+}
+
+.card.v_10.s {
+	@include back_pos(9,3);
+}
+
+.card.v_9.c {
+	@include back_pos(8,0);
+}
+
+.card.v_9.d {
+	@include back_pos(8,1);
+}
+
+.card.v_9.h {
+	@include back_pos(8,2);
+}
+
+.card.v_9.s {
+	@include back_pos(8,3);
+}
+
+.card.v_8.c {
+	@include back_pos(7,0);
+}
+
+.card.v_8.d {
+	@include back_pos(7,1);
+}
+
+.card.v_8.h {
+	@include back_pos(7,2);
+}
+
+.card.v_8.s {
+	@include back_pos(7,3);
+}
+
+.card.v_7.c {
+	@include back_pos(6,0);
+}
+
+.card.v_7.d {
+	@include back_pos(6,1);
+}
+
+.card.v_7.h {
+	@include back_pos(6,2);
+}
+
+.card.v_7.s {
+	@include back_pos(6,3);
+}
+
+.card.v_6.c {
+	@include back_pos(5,0);
+}
+
+.card.v_6.d {
+	@include back_pos(5,1);
+}
+
+.card.v_6.h {
+	@include back_pos(5,2);
+}
+
+.card.v_6.s {
+	@include back_pos(5,3);
+}
+
+.card.v_5.c {
+	@include back_pos(4,0);
+}
+
+.card.v_5.d {
+	@include back_pos(4,1);
+}
+
+.card.v_5.h {
+	@include back_pos(4,2);
+}
+
+.card.v_5.s {
+	@include back_pos(4,3);
+}
+
+.card.v_4.c {
+	@include back_pos(3,0);
+}
+
+.card.v_4.d {
+	@include back_pos(3,1);
+}
+
+.card.v_4.h {
+	@include back_pos(3,2);
+}
+
+.card.v_4.s {
+	@include back_pos(3,3);
+}
+
+.card.v_3.c {
+	@include back_pos(2,0);
+}
+
+.card.v_3.d {
+	@include back_pos(2,1);
+}
+
+.card.v_3.h {
+	@include back_pos(2,2);
+}
+
+.card.v_3.s {
+	@include back_pos(2,3);
+}
+
+.card.v_2.c {
+	@include back_pos(1,0);
+}
+
+.card.v_2.d {
+	@include back_pos(1,1);
+}
+
+.card.v_2.h {
+	@include back_pos(1,2);
+}
+
+.card.v_2.s {
+	@include back_pos(1,3);
+}
