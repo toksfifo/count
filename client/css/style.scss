@@ -13,10 +13,11 @@ $card_width: 167.5px/2;
 
 .card { 
 	background-image: url('../img/cards_noborder_small.png');
-	height: $card_height;
-	width: $card_width;
 	border: 1px solid black;
 	@include border-radius(5px);
+	float: left;
+	height: $card_height;
+	width: $card_width;
 }
 
 .card.back {

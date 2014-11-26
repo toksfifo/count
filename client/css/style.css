@@ -1,11 +1,12 @@
 .card {
   background-image: url("../img/cards_noborder_small.png");
-  height: 121.75px;
-  width: 83.75px;
   border: 1px solid black;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  float: left;
+  height: 121.75px;
+  width: 83.75px; }
 
 .card.back {
   background-position: -167.5px -487px; }

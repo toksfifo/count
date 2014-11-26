@@ -82,19 +82,27 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	$scope.deal = function(number_of_cards) {
 		if ($scope.cards.length) {
 			for (var i=0; i<number_of_cards; i++) {
-				$scope.current_deal.push($scope.cards.pop());
+				$scope.current_deal.push($scope.cards.shift());
 			}
 			return $scope.current_deal;
 			// todo focus on count_guess
 		}
 	};
 
-	$scope.deal_continuous = function(number_of_cards_per_time) {
-		// $scope.deal(number_of_cards_per_time);
+	$scope.deal_continuous = function(number_of_cards_per_time, time_per_cards, number_of_decks) {
+		$scope.create_shuffled_deck(number_of_decks);
 		$scope.deal(number_of_cards_per_time);
 		$interval(function() {
+			$scope.remove_shown_cards(number_of_cards_per_time);
 			$scope.deal(number_of_cards_per_time);
-		}, 500, $scope.cards.length);
+			// console.log('still going');
+		}, time_per_cards*1000, $scope.cards.length);
+	};
+
+	$scope.remove_shown_cards = function(number_of_cards_to_remove) {
+		for (var i=0; i<number_of_cards_to_remove; i++) {
+			$scope.current_deal.shift();
+		}
 	};
 
 	$scope.verify_count = function(guess) {
