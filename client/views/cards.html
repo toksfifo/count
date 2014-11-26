@@ -1,11 +1,11 @@
-<div>
+<div ng-init="create_shuffled_deck(1)">
 
-	<!-- <button ng-click='deal(2)' ng-show='cards.length'>Deal</button>
-	<button ng-click='deal_continuous(2)' ng-show='cards.length'>Continuous Deal</button> -->
+	<!-- <button ng-click='deal(54)'>Deal</button>
+	<button ng-click='deal_continuous(2)'>Continuous Deal</button> -->
 
 	<form ng-submit='deal_continuous(number_of_cards, time_per_cards, number_of_decks)'>
-		Show me <input type='number' ng-model='number_of_cards'> cards every <input type='number' ng-model='time_per_cards'> seconds from <input type='number' ng-model='number_of_decks'> decks.
-		<button type='submit' ng-show='!cards.length'>Start</button>
+		Show me <input type='text' ng-model='number_of_cards'> cards every <input type='text' ng-model='time_per_cards'> seconds from <input type='text' ng-model='number_of_decks'> decks.
+		<button type='submit'>Start</button>
 	</form>
 
 
