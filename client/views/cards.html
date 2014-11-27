@@ -5,20 +5,30 @@
 	<!-- <button ng-click='pause_deal()'>Pause</button>
 	<button ng-click='continue_deal(number_of_cards_per_time, time_per_cards, split_array)'>Continue</button> -->
 	
+	<div id="start" ng-show="start">
+		<form ng-submit='deal_continuous(number_of_cards_per_time, time_per_cards, number_of_decks, count_freq)'>
+			Show me <input type='text' ng-model='number_of_cards_per_time'> cards every <input type='text' ng-model='time_per_cards'> seconds from <input type='text' ng-model='number_of_decks'> decks, and ask for the count 
+			<select ng-model='count_freq' ng-options='option for option in freq_options'></select>
+			<button type='submit'>Start</button>
+		</form>
+	</div>
+	
 
-	<form ng-submit='deal_continuous(number_of_cards_per_time, time_per_cards, number_of_decks, count_freq)'>
-		Show me <input type='text' ng-model='number_of_cards_per_time'> cards every <input type='text' ng-model='time_per_cards'> seconds from <input type='text' ng-model='number_of_decks'> decks, and ask for the count 
-		<select ng-model='count_freq' ng-options='option for option in freq_options'></select>
-		<button type='submit'>Start</button>
-	</form>
+	<!-- frequency option: {{ count_freq }} <br> -->
+	cards left in deck: {{ cards.length }}<span ng-show='deck.number'>/{{ deck.number*52 }}</span>
 
-	frequency option: {{ count_freq }} <br>
-	cards left in deck: {{ cards.length }}
+	<div id="verify" ng-show='verify'>
+		<form ng-submit='verify_count(count_guess)'>
+			<input type='text' ng-model='count_guess' placeholder='count?'>
+			<button type="submit">Verify Count</button>
+		</form>
+	</div>
 
-	<form ng-submit='verify_count(count_guess)'>
-		<input type='text' ng-model='count_guess' placeholder='count?'>
-		<button type="submit">Verify Count</button>
-	</form>
+	<div id="end" ng-show='end'>
+		<button ng-click="end=false; start=true">Again</button>
+	</div>
+
+	
 
 	<p ng-show='count_right'>You got the count right!</p>
 

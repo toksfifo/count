@@ -87,6 +87,9 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	$scope.cards;
 	$scope.current_deal = [];
 	$scope.split_array;
+	$scope.start = true;
+	$scope.verify = false;
+	$scope.end = false;
 	var start_deal;
 	var iterations;
 
@@ -113,6 +116,8 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	};
 
 	$scope.deal_continuous = function(number_of_cards_per_time, time_per_cards, number_of_decks, count_freq) {
+		$scope.start = false;
+		$scope.end = false;
 		$scope.current_deal = [];
 		$scope.split_array = get_split_from_freq(count_freq, number_of_decks, number_of_cards_per_time);
 		// console.log($scope.split_array);
@@ -123,6 +128,7 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	};
 
 	$scope.continue_deal = function(number_of_cards_per_time, time_per_cards, split_array) {
+		$scope.verify = false;
 		start_deal = $interval(function() {
 			iterations++;
 			// console.log(iterations);
@@ -132,14 +138,20 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 				$scope.pause_deal();
 			}
 			if ($scope.current_deal.length == 0) {
-				$scope.pause_deal();
+				$scope.stop_deal();
 			}
 		}, time_per_cards*1000);
 	};
 
 	$scope.pause_deal = function() {
 		$interval.cancel(start_deal);
+		$scope.verify = true;
 	};
+
+	$scope.stop_deal = function() {
+		$interval.cancel(start_deal);
+		$scope.end = true;
+	}
 
 	$scope.remove_shown_cards = function(number_of_cards_to_remove) {
 		for (var i=0; i<number_of_cards_to_remove; i++) {
@@ -148,6 +160,7 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	};
 
 	$scope.verify_count = function(guess) {
+		// todo add autofocus
 		if (guess == -$scope.get_count($scope.cards)) { // important comparison, since guess is a string
 			$scope.count_right = true;
 			// todo try to set timeout here

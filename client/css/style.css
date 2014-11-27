@@ -1,3 +1,16 @@
+html, body {
+  border: 0px;
+  margin: 0px;
+  padding: 0px; }
+
+#start, #end {
+  background-color: gray;
+  height: 100vh;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100vw; }
+
 .card {
   background-image: url("../img/cards_noborder_small.png");
   border: 1px solid black;
