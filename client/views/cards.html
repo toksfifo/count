@@ -1,14 +1,18 @@
-<div ng-init="create_shuffled_deck(1)">
+<div>
 
 	<!-- <button ng-click='deal(54)'>Deal</button>
 	<button ng-click='deal_continuous(2)'>Continuous Deal</button> -->
+	<!-- <button ng-click='pause_deal()'>Pause</button>
+	<button ng-click='continue_deal(number_of_cards_per_time, time_per_cards, split_array)'>Continue</button> -->
+	
 
-	<form ng-submit='deal_continuous(number_of_cards, time_per_cards, number_of_decks)'>
-		Show me <input type='text' ng-model='number_of_cards'> cards every <input type='text' ng-model='time_per_cards'> seconds from <input type='text' ng-model='number_of_decks'> decks.
+	<form ng-submit='deal_continuous(number_of_cards_per_time, time_per_cards, number_of_decks, count_freq)'>
+		Show me <input type='text' ng-model='number_of_cards_per_time'> cards every <input type='text' ng-model='time_per_cards'> seconds from <input type='text' ng-model='number_of_decks'> decks, and ask for the count 
+		<select ng-model='count_freq' ng-options='option for option in freq_options'></select>
 		<button type='submit'>Start</button>
 	</form>
 
-
+	frequency option: {{ count_freq }} <br>
 	cards left in deck: {{ cards.length }}
 
 	<form ng-submit='verify_count(count_guess)'>
