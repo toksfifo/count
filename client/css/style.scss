@@ -1,6 +1,88 @@
+// variables
 $card_height: 243.5px/2;
 $card_width: 167.5px/2;
+$main_gray: rgba(192, 192, 192, 1);
+$trans_gray: rgba(192, 192, 192, 0.5);
+$trans_black: rgba(0,0,0,0.8);
+$full: 100%;
+$black: 1px solid black;
+$white: 1px solid white;
+$nav_height: 75px;
+$title_height: 100px;
+$phrase_height: 50px;
+$main_margin: -($title_height+$phrase_height)/2;
 
+// home.html
+#bottom {
+	height: 100vh;
+	width: $full;
+}
+
+#darken {
+	background: $trans_black;
+	height: $full;
+	width: $full;
+}
+
+.go_columns {
+	// float: left;
+	border: $black;
+	height: $full;
+}
+
+#top {
+	border: $white;
+	color: white;
+	height: 100vh;
+	width: $full;
+	background: url('../img/blackjack_table.jpg') no-repeat center center;
+	font-family: 'Josefin Sans', sans-serif;
+	font-variant: small-caps;
+}
+
+#main {
+	width: $full;
+	position: absolute;
+	top: 50%;
+	margin-top: $main_margin;
+}
+
+#main #title {
+	width: $full;
+	// border: $white;
+	font-size: 60px;
+	text-align: center;
+	height: $title_height;
+	line-height: $title_height;
+	font-weight: 600;
+}
+
+#main #phrase {
+	width: $full;
+	// border: $white;
+	text-align: center;
+	height: $phrase_height;
+	line-height: $phrase_height;
+	font-family: 'Ubuntu', 'sans-serif';
+	font-variant: normal;
+	font-size: 18px;
+	font-weight: 300;
+	letter-spacing: 2px;
+	word-spacing: 5px;
+}
+
+#nav {
+	// border: $black;
+	height: $nav_height;
+	width: $full;
+	// background: $trans_black;
+}
+
+#nav #links {
+	float: right;
+}
+
+// cards, count.html
 @mixin back_pos($width, $height) {
 	background-position: (-$card_width * $width) (-$card_height * $height);
 }
@@ -11,19 +93,28 @@ $card_width: 167.5px/2;
 	border-radius: $radius;
 }
 
-html, body {
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-}
-
-#start, #end {
-	background-color: gray;
+@mixin screen($color) {
+	background-color: $color;
 	height: 100vh;
 	left: 0px;
 	position: fixed;
 	top: 0px;
 	width: 100vw;
+}
+
+html, body {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+#start, #end {
+	@include screen($main_gray);
+}
+
+#verify {
+	@include screen($trans_gray);
 }
 
 .card { 

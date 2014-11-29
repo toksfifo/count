@@ -33,7 +33,7 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 		if (freq == 'never') {
 			split = [];
 		}
-		else if (freq == 'randomly') { // todo
+		else if (freq == 'randomly') {
 			var number_of_splits = number_of_decks*4;
 			var total_iterations = Math.floor(number_of_decks*52/number_of_cards_per_time);
 			for (var i=0; i<number_of_splits; i++) {
@@ -93,7 +93,17 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	var start_deal;
 	var iterations;
 
-	$scope.freq_options = ['randomly', 'never', 'once at middle'];
+	// default values for count form
+	$scope.number_of_cards_per_time = 2;
+	$scope.time_per_cards = 2;
+	$scope.number_of_decks = 1;
+	$scope.count_freq = 'randomly';
+
+	// options for count form
+	$scope.card_number_options = [1,2,3,4];
+	$scope.time_options = [0.1,0.5,1,2,3,4];
+	$scope.deck_number_options = [1,2,3,4,5,6,7,8];
+	$scope.freq_options = ['randomly', 'once at middle', 'never'];
 
 	$scope.create_deck = function(number_of_decks) {
 		$scope.deck = new Deck(number_of_decks);
@@ -145,6 +155,7 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 
 	$scope.pause_deal = function() {
 		$interval.cancel(start_deal);
+		$scope.count_guess = '';
 		$scope.verify = true;
 	};
 
@@ -161,6 +172,7 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 
 	$scope.verify_count = function(guess) {
 		// todo add autofocus
+		// todo add timeout before verify screen pops up
 		if (guess == -$scope.get_count($scope.cards)) { // important comparison, since guess is a string
 			$scope.count_right = true;
 			// todo try to set timeout here

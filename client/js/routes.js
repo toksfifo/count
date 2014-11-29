@@ -1,11 +1,11 @@
 count_app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/', {
-			templateUrl: 'client/views/sample.html', // todo remove sample.html
-			controller: 'SampleCtrl'
+			templateUrl: 'client/views/home.html',
+			controller: ''
 		}).
-		when('/cards', {
-			templateUrl: 'client/views/cards.html',
+		when('/count', {
+			templateUrl: 'client/views/count.html',
 			controller: 'CardCtrl'
 		}).
 		otherwise({
