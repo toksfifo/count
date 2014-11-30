@@ -11,10 +11,94 @@ $nav_height: 75px;
 $title_height: 100px;
 $phrase_height: 50px;
 $main_margin: -($title_height+$phrase_height)/2;
+$bottom_height: 800px;
+$main_min_width: 650px;
+$scroll_width: 50px;
+$main_red: red;
+$nav_margin: 30px;
+$logo_height: 75px;
 
 // home.html
-#bottom {
+@mixin transition($stuff) {
+	-webkit-transition: $stuff;
+	-moz-transition: $stuff;
+	-o-transition: $stuff;
+	transition: $stuff;
+}
+
+@mixin sliding_underline() {
+	display: inline-block;
+	position: relative;
+	// padding-bottom: $padding;
+}
+
+@mixin sliding_underline_after($bottom, $height, $timing) {
+	content: '';
+	display: block;
+	margin: auto;
+	height: $height;
+	width: 0px;
+	background: transparent;
+	position: relative;
+	bottom: $bottom;
+	@include transition((width $timing ease, background-color $timing ease));
+	// transition: width $timing ease, background-color $timing ease;
+}
+
+@mixin sliding_underline_after_hover($color) {
+	width: 100%;
+	background: $color;
+}
+
+@mixin animation($stuff) {
+	-webkit-animation: $stuff;
+	-moz-animation: $stuff;
+	-o-animation: $stuff;
+	animation: $stuff;
+}
+
+@mixin small_bounce($px) {
+	0% {top: 0px;}
+	50% {top: $px;}
+	100% {top: 0px;}
+}
+
+@mixin link() {
+	color: white;
+	outline: 0;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+	&:active {
+		text-decoration: none;
+	}
+}
+
+// card mixins
+@mixin back_pos($width, $height) {
+	background-position: (-$card_width * $width) (-$card_height * $height);
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin screen($color) {
+	background-color: $color;
 	height: 100vh;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100vw;
+}
+
+
+#bottom {
+	height: $bottom_height;
 	width: $full;
 }
 
@@ -31,76 +115,138 @@ $main_margin: -($title_height+$phrase_height)/2;
 }
 
 #top {
-	border: $white;
+	// border: $white;
 	color: white;
 	height: 100vh;
 	width: $full;
 	background: url('../img/blackjack_table.jpg') no-repeat center center;
 	font-family: 'Josefin Sans', sans-serif;
 	font-variant: small-caps;
+	// text-shadow: 1px 1px 0 $trans_black;
 }
 
 #main {
 	width: $full;
+	min-width: $main_min_width;
 	position: absolute;
 	top: 50%;
 	margin-top: $main_margin;
+	// height: -moz-calc(100vh - #{$nav_height});
+
+	#title {
+		width: $full;
+		// border: $white;
+		font-size: 72px;
+		text-align: center;
+		height: $title_height;
+		line-height: $title_height;
+		font-weight: 700;
+		letter-spacing: 10px;
+	}
+
+	#phrase {
+		width: $full;
+		// border: $white;
+		text-align: center;
+		height: $phrase_height;
+		line-height: $phrase_height;
+		font-family: 'Open Sans', 'sans-serif';
+		font-variant: normal;
+		font-size: 18px;
+		font-weight: 300;
+		letter-spacing: 2px;
+		word-spacing: 5px;
+	}
+
+	
 }
 
-#main #title {
-	width: $full;
-	// border: $white;
-	font-size: 60px;
+#scroll_circle {
+	bottom: $scroll_width + 50px;
+	width: $scroll_width;
+	height: $scroll_width;
+	position: relative;
+	margin-left: 50%;
+	left: -($scroll_width)/2;
 	text-align: center;
-	height: $title_height;
-	line-height: $title_height;
-	font-weight: 600;
+	border: $white;
+	@include border_radius($scroll_width/2);
+	cursor: pointer;
+	@include transition(background-color 0.5s ease);
+
+	&:hover {
+		background-color: $main_red;
+	}
+
+	#scroll {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		background: url('../img/arrow.png') no-repeat center center;
+		@include animation(small_bounce 1s infinite);
+	}
 }
 
-#main #phrase {
-	width: $full;
-	// border: $white;
-	text-align: center;
-	height: $phrase_height;
-	line-height: $phrase_height;
-	font-family: 'Ubuntu', 'sans-serif';
-	font-variant: normal;
-	font-size: 18px;
-	font-weight: 300;
-	letter-spacing: 2px;
-	word-spacing: 5px;
+@keyframes small_bounce {
+	@include small_bounce(5px);
+}
+
+@-webkit-keyframes small_bounce {
+	@include small_bounce(5px);
 }
 
 #nav {
 	// border: $black;
 	height: $nav_height;
 	width: $full;
+	line-height: $nav_height;
 	// background: $trans_black;
+
+	a {
+		@include link();
+	}
+
+	#links {
+		float: right;
+
+		a {
+			// border: $white;
+			font-size: 18px;
+			font-weight: 600;
+			margin-right: $nav_margin;
+			letter-spacing: 2px;
+			@include sliding_underline();
+
+			&:after {
+				@include sliding_underline_after(20px, 5px, 0.35s);
+			}
+			&:hover:after {
+				@include sliding_underline_after_hover($main_red);
+			}
+		}
+	}
+
+	#logo_text {
+		font-weight: 700;
+		margin-left: $nav_margin;
+		float: left;
+		font-size: 36px;
+		letter-spacing: 5px;
+	}
+
+	#logo {
+		float: left;
+		// border: $white;
+		height: $logo_height;
+		width: $logo_height;
+		background: url('../img/logo_red.png') no-repeat center center;
+		margin-top: ($nav_height - $logo_height)/2;
+		margin-left: 10px;
+	}
 }
 
-#nav #links {
-	float: right;
-}
 
 // cards, count.html
-@mixin back_pos($width, $height) {
-	background-position: (-$card_width * $width) (-$card_height * $height);
-}
-
-@mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	border-radius: $radius;
-}
-
-@mixin screen($color) {
-	background-color: $color;
-	height: 100vh;
-	left: 0px;
-	position: fixed;
-	top: 0px;
-	width: 100vw;
-}
 
 html, body {
 	border: 0px;

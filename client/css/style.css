@@ -1,5 +1,5 @@
 #bottom {
-  height: 100vh;
+  height: 800px;
   width: 100%; }
 
 #darken {
@@ -12,7 +12,6 @@
   height: 100%; }
 
 #top {
-  border: 1px solid white;
   color: white;
   height: 100vh;
   width: 100%;
@@ -22,36 +21,124 @@
 
 #main {
   width: 100%;
+  min-width: 650px;
   position: absolute;
   top: 50%;
   margin-top: -75px; }
+  #main #title {
+    width: 100%;
+    font-size: 72px;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-weight: 700;
+    letter-spacing: 10px; }
+  #main #phrase {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-family: 'Open Sans', 'sans-serif';
+    font-variant: normal;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    word-spacing: 5px; }
 
-#main #title {
-  width: 100%;
-  font-size: 60px;
-  text-align: center;
-  height: 100px;
-  line-height: 100px;
-  font-weight: 600; }
-
-#main #phrase {
-  width: 100%;
-  text-align: center;
+#scroll_circle {
+  bottom: 100px;
+  width: 50px;
   height: 50px;
-  line-height: 50px;
-  font-family: 'Ubuntu', 'sans-serif';
-  font-variant: normal;
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  word-spacing: 5px; }
+  position: relative;
+  margin-left: 50%;
+  left: -25px;
+  text-align: center;
+  border: 1px solid white;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease; }
+  #scroll_circle:hover {
+    background-color: red; }
+  #scroll_circle #scroll {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: url("../img/arrow.png") no-repeat center center;
+    -webkit-animation: small_bounce 1s infinite;
+    -moz-animation: small_bounce 1s infinite;
+    -o-animation: small_bounce 1s infinite;
+    animation: small_bounce 1s infinite; }
 
+@keyframes small_bounce {
+  0% {
+    top: 0px; }
+  50% {
+    top: 5px; }
+  100% {
+    top: 0px; } }
+@-webkit-keyframes small_bounce {
+  0% {
+    top: 0px; }
+  50% {
+    top: 5px; }
+  100% {
+    top: 0px; } }
 #nav {
   height: 75px;
-  width: 100%; }
-
-#nav #links {
-  float: right; }
+  width: 100%;
+  line-height: 75px; }
+  #nav a {
+    color: white;
+    outline: 0;
+    text-decoration: none; }
+    #nav a:hover {
+      text-decoration: none; }
+    #nav a:active {
+      text-decoration: none; }
+  #nav #links {
+    float: right; }
+    #nav #links a {
+      font-size: 18px;
+      font-weight: 600;
+      margin-right: 30px;
+      letter-spacing: 2px;
+      display: inline-block;
+      position: relative; }
+      #nav #links a:after {
+        content: '';
+        display: block;
+        margin: auto;
+        height: 5px;
+        width: 0px;
+        background: transparent;
+        position: relative;
+        bottom: 20px;
+        -webkit-transition: width 0.35s ease, background-color 0.35s ease;
+        -moz-transition: width 0.35s ease, background-color 0.35s ease;
+        -o-transition: width 0.35s ease, background-color 0.35s ease;
+        transition: width 0.35s ease, background-color 0.35s ease; }
+      #nav #links a:hover:after {
+        width: 100%;
+        background: red; }
+  #nav #logo_text {
+    font-weight: 700;
+    margin-left: 30px;
+    float: left;
+    font-size: 36px;
+    letter-spacing: 5px; }
+  #nav #logo {
+    float: left;
+    height: 75px;
+    width: 75px;
+    background: url("../img/logo_red.png") no-repeat center center;
+    margin-top: 0px;
+    margin-left: 10px; }
 
 html, body {
   border: 0px;
@@ -80,6 +167,7 @@ html, body {
   border: 1px solid black;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  -o-border-radius: 5px;
   border-radius: 5px;
   float: left;
   height: 121.75px;
