@@ -11,12 +11,16 @@ $nav_height: 75px;
 $title_height: 100px;
 $phrase_height: 50px;
 $main_margin: -($title_height+$phrase_height)/2;
-$bottom_height: 800px;
-$main_min_width: 650px;
+$bottom_height: 700px;
+$main_min_width: 750px;
 $scroll_width: 50px;
 $main_red: red;
 $nav_margin: 30px;
-$logo_height: 75px;
+$logo_height: 46px;
+$p_bottom_width: 320px;
+$p_bottom_height: 500px;
+$button_width: 150px;
+$button_height: 50px;
 
 // home.html
 @mixin transition($stuff) {
@@ -75,6 +79,16 @@ $logo_height: 75px;
 	}
 }
 
+@mixin font($size, $weight, $family, $letter_spacing, $word-spacing, $variant, $color) {
+	font-size: $size;
+	font-weight: $weight;
+	font-family: $family;
+	letter-spacing: $letter_spacing;
+	word-spacing: $word_spacing;
+	font-variant: $variant;
+	color: $color;
+}
+
 // card mixins
 @mixin back_pos($width, $height) {
 	background-position: (-$card_width * $width) (-$card_height * $height);
@@ -100,18 +114,89 @@ $logo_height: 75px;
 #bottom {
 	height: $bottom_height;
 	width: $full;
+
+	.go_columns {
+
+		// border: $black;
+		height: $full;
+
+		.bottom_title {
+			// border: $black;
+			text-align: center;
+			width: 100%;
+			margin-top: 30px;
+
+			h1 {
+				@include font(76px, 700, ('Josefin Sans', sans-serif), 0px, 0px, inherit, $main_red);
+				font-style: italic;
+				display: inline;
+				// float: left;
+				// margin: 50px auto auto 50px;
+			}
+
+			h2 {
+				@include font(38px, 400, ('Josefin Sans', sans-serif), 2px, 0px, inherit, black);
+				display: inline;
+				// float: left;
+				// margin: 80px auto auto 20px;
+				padding-left: 20px;
+			}
+		}
+
+		.paragraphs {
+			// border: $black;
+			height: $p_bottom_height;
+			position: absolute;
+			width: $p_bottom_width;
+			left: 50%;
+			margin-left: -($p_bottom_width)/2;
+			margin-top: 10px;
+			text-align: center;
+
+			p {
+				// border: $black;
+				text-align: left;
+				line-height: 200%;
+				width: 100%;
+				margin-top: 20px;	
+				@include font(18px, 300, ('Helvetica Neue', 'Helvetica', 'sans-serif'), 0px, 0px, inherit, black);
+			}
+
+			.but {
+				@include link();
+				color: black;
+				font-size: 18px;
+				position: absolute;
+				bottom: 0px;
+				left: ($p_bottom_width - $button_width)/2;
+
+				button {
+					width: $button_width;
+					height: $button_height;
+					background-color: transparent;
+					border: 2px solid black;
+					padding: 0;
+					@include border_radius(10px);
+					@include transition((background-color 0.35s ease, color 0.35s ease));
+
+
+					&:hover {
+						background-color: $main_red;
+						color: white;
+					}
+				}
+			}
+		}
+		
+		
+
+	}
 }
 
 #darken {
 	background: $trans_black;
 	height: $full;
 	width: $full;
-}
-
-.go_columns {
-	// float: left;
-	border: $black;
-	height: $full;
 }
 
 #top {
@@ -136,12 +221,10 @@ $logo_height: 75px;
 	#title {
 		width: $full;
 		// border: $white;
-		font-size: 72px;
 		text-align: center;
 		height: $title_height;
 		line-height: $title_height;
-		font-weight: 700;
-		letter-spacing: 10px;
+		@include font(72px, 700, inherit, 10px, 0px, inherit, inherit);
 	}
 
 	#phrase {
@@ -150,12 +233,7 @@ $logo_height: 75px;
 		text-align: center;
 		height: $phrase_height;
 		line-height: $phrase_height;
-		font-family: 'Open Sans', 'sans-serif';
-		font-variant: normal;
-		font-size: 18px;
-		font-weight: 300;
-		letter-spacing: 2px;
-		word-spacing: 5px;
+		@include font(20px, 200, ('Helvetica Neue', 'Helvetica', 'sans-serif'), 2px, 5px, normal, inherit);
 	}
 
 	
@@ -169,10 +247,10 @@ $logo_height: 75px;
 	margin-left: 50%;
 	left: -($scroll_width)/2;
 	text-align: center;
-	border: $white;
+	border: 2px solid white;
 	@include border_radius($scroll_width/2);
 	cursor: pointer;
-	@include transition(background-color 0.5s ease);
+	@include transition(background-color 0.35s ease);
 
 	&:hover {
 		background-color: $main_red;
@@ -211,11 +289,9 @@ $logo_height: 75px;
 
 		a {
 			// border: $white;
-			font-size: 18px;
-			font-weight: 600;
 			margin-right: $nav_margin;
-			letter-spacing: 2px;
 			@include sliding_underline();
+			@include font(18px, 600, inherit, 2px, 0px, inherit, inherit);
 
 			&:after {
 				@include sliding_underline_after(20px, 5px, 0.35s);
@@ -227,11 +303,10 @@ $logo_height: 75px;
 	}
 
 	#logo_text {
-		font-weight: 700;
 		margin-left: $nav_margin;
 		float: left;
-		font-size: 36px;
-		letter-spacing: 5px;
+		@include font(36px, 700, inherit, 5px, 0px, inherit, inherit);
+		// border: $white;
 	}
 
 	#logo {
@@ -240,11 +315,20 @@ $logo_height: 75px;
 		height: $logo_height;
 		width: $logo_height;
 		background: url('../img/logo_red.png') no-repeat center center;
-		margin-top: ($nav_height - $logo_height)/2;
-		margin-left: 10px;
+		// margin-top: ($nav_height - $logo_height)/2;
+		margin-top: 11px;
+		margin-left: -105px;
 	}
 }
 
+#footer {
+	width: $full;
+	height: 100px;
+}
+
+.imp {
+	font-style: italic;
+}
 
 // cards, count.html
 
