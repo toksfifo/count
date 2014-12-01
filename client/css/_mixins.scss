@@ -1,0 +1,86 @@
+@mixin transition($stuff) {
+	-webkit-transition: $stuff;
+	-moz-transition: $stuff;
+	-o-transition: $stuff;
+	transition: $stuff;
+}
+
+@mixin sliding_underline() {
+	display: inline-block;
+	position: relative;
+	// padding-bottom: $padding;
+}
+
+@mixin sliding_underline_after($bottom, $height, $timing) {
+	content: '';
+	display: block;
+	margin: auto;
+	height: $height;
+	width: 0px;
+	background: transparent;
+	position: relative;
+	bottom: $bottom;
+	@include transition((width $timing ease, background-color $timing ease));
+	// transition: width $timing ease, background-color $timing ease;
+}
+
+@mixin sliding_underline_after_hover($color) {
+	width: 100%;
+	background: $color;
+}
+
+@mixin animation($stuff) {
+	-webkit-animation: $stuff;
+	-moz-animation: $stuff;
+	-o-animation: $stuff;
+	animation: $stuff;
+}
+
+@mixin small_bounce($px) {
+	0% {top: 0px;}
+	50% {top: $px;}
+	100% {top: 0px;}
+}
+
+@mixin link() {
+	color: white;
+	outline: 0;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+	&:active {
+		text-decoration: none;
+	}
+}
+
+@mixin font($size, $weight, $family, $letter_spacing, $word-spacing, $variant, $color) {
+	font-size: $size;
+	font-weight: $weight;
+	font-family: $family;
+	letter-spacing: $letter_spacing;
+	word-spacing: $word_spacing;
+	font-variant: $variant;
+	color: $color;
+}
+
+// card mixins
+@mixin back_pos($width, $height) {
+	background-position: (-$card_width * $width) (-$card_height * $height);
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin screen($color) {
+	background-color: $color;
+	height: 100vh;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100vw;
+}

@@ -1,0 +1,7 @@
+#start, #end {
+	@include screen($main_gray);
+}
+
+#verify {
+	@include screen($trans_gray);
+}
