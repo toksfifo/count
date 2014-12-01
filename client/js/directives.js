@@ -20,7 +20,7 @@ count_app.directive('scrollToItem', function() {
         },                                                                                   
         link: function(scope, $elm, attr) {                                                   
             $elm.on('click', function() {                                                    
-                $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top }, 1000);
+                $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top }, 800);
             });                                                                              
         }                                                                                    
     };

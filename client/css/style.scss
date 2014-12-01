@@ -115,6 +115,18 @@ $button_height: 50px;
 	height: $bottom_height;
 	width: $full;
 
+	.break:after {
+		content: '';
+		height: $p_bottom_height;
+		width: 1px;
+		display: block;
+		position: relative;
+		left: -15px;
+		background: linear-gradient(white 0%, $trans_gray 50%, white 100%);
+		background: -moz-linear-gradient(bottom, white 0%, $trans_gray 50%, white 100%);
+	}
+
+
 	.go_columns {
 
 		// border: $black;
@@ -128,8 +140,9 @@ $button_height: 50px;
 
 			h1 {
 				@include font(76px, 700, ('Josefin Sans', sans-serif), 0px, 0px, inherit, $main_red);
-				font-style: italic;
+				// font-style: italic;
 				display: inline;
+				text-shadow: 1px 1px 0 $trans_gray;
 				// float: left;
 				// margin: 50px auto auto 50px;
 			}
@@ -140,6 +153,8 @@ $button_height: 50px;
 				// float: left;
 				// margin: 80px auto auto 20px;
 				padding-left: 20px;
+				text-shadow: 1px 1px 0 $trans_gray;
+
 			}
 		}
 
@@ -169,6 +184,7 @@ $button_height: 50px;
 				position: absolute;
 				bottom: 0px;
 				left: ($p_bottom_width - $button_width)/2;
+				box-shadow: 0 2px 0 $trans_gray;
 
 				button {
 					width: $button_width;
@@ -203,6 +219,7 @@ $button_height: 50px;
 	// border: $white;
 	color: white;
 	height: 100vh;
+	min-height: 375px;
 	width: $full;
 	background: url('../img/blackjack_table.jpg') no-repeat center center;
 	font-family: 'Josefin Sans', sans-serif;

@@ -1,6 +1,15 @@
 #bottom {
   height: 700px;
   width: 100%; }
+  #bottom .break:after {
+    content: '';
+    height: 500px;
+    width: 1px;
+    display: block;
+    position: relative;
+    left: -15px;
+    background: linear-gradient(white 0%, rgba(192, 192, 192, 0.5) 50%, white 100%);
+    background: -moz-linear-gradient(bottom, white 0%, rgba(192, 192, 192, 0.5) 50%, white 100%); }
   #bottom .go_columns {
     height: 100%; }
     #bottom .go_columns .bottom_title {
@@ -15,8 +24,8 @@
         word-spacing: 0px;
         font-variant: inherit;
         color: red;
-        font-style: italic;
-        display: inline; }
+        display: inline;
+        text-shadow: 1px 1px 0 rgba(192, 192, 192, 0.5); }
       #bottom .go_columns .bottom_title h2 {
         font-size: 38px;
         font-weight: 400;
@@ -26,7 +35,8 @@
         font-variant: inherit;
         color: black;
         display: inline;
-        padding-left: 20px; }
+        padding-left: 20px;
+        text-shadow: 1px 1px 0 rgba(192, 192, 192, 0.5); }
     #bottom .go_columns .paragraphs {
       height: 500px;
       position: absolute;
@@ -55,7 +65,8 @@
         font-size: 18px;
         position: absolute;
         bottom: 0px;
-        left: 85px; }
+        left: 85px;
+        box-shadow: 0 2px 0 rgba(192, 192, 192, 0.5); }
         #bottom .go_columns .paragraphs .but:hover {
           text-decoration: none; }
         #bottom .go_columns .paragraphs .but:active {
@@ -86,6 +97,7 @@
 #top {
   color: white;
   height: 100vh;
+  min-height: 375px;
   width: 100%;
   background: url("../img/blackjack_table.jpg") no-repeat center center;
   font-family: 'Josefin Sans', sans-serif;
