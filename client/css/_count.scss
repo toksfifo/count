@@ -28,7 +28,12 @@
 	}
 
 	#end {
-		@include screen($main_gray);
+		@include screen(white);
+
+		button {
+			margin-top: 150px;
+			@include button($button_height, $button_width);
+		}
 	}
 
 	#verify {
@@ -37,6 +42,14 @@
 		form {
 			margin-top: 100px;
 		}
+	}
+
+	#green_screen {
+		@include screen(transparentize($verify_green, 0.5));
+	}
+
+	#red_screen {
+		@include screen(transparentize($verify_red, 0.5));
 	}
 }
 
@@ -58,6 +71,7 @@
 	font-variant: small-caps;
 	position: fixed;
 	z-index: 2;
+	@include box-shadow((0 2px 2px $trans_black));
 }
 
 

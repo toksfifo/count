@@ -19,7 +19,7 @@ count_app.controller('SampleCtrl', ['$scope', '$firebase', function($scope, $fir
 }]);
 
 // todo check if I need $firebase for card controller
-count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($scope, $firebase, $interval) {
+count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout', function($scope, $firebase, $interval, $timeout) {
 	var ten_cards = [10, 'j', 'q', 'k'];
 
 	var full_deck = [new Card(2,'c'),new Card(2,'d'), new Card(2,'h'), new Card(2,'s'), new Card(3,'c'), new Card(3,'d'), new Card(3,'h'), new Card(3,'s'), new Card(4,'c'), new Card(4,'d'), new Card(4,'h'), new Card(4,'s'), new Card(5,'c'), new Card(5,'d'), new Card(5,'h'), new Card(5,'s'), new Card(6,'c'), new Card(6,'d'), new Card(6,'h'), new Card(6,'s'), new Card(7,'c'), new Card(7,'d'), new Card(7,'h'), new Card(7,'s'), new Card(8,'c'), new Card(8,'d'), new Card(8,'h'), new Card(8,'s'), new Card(9,'c'), new Card(9,'d'), new Card(9,'h'), new Card(9,'s'), new Card(10,'c'), new Card(10,'d'), new Card(10,'h'), new Card(10,'s'), new Card('j','c'), new Card('j','d'), new Card('j','h'), new Card('j','s'), new Card('q','c'), new Card('q','d'), new Card('q','h'), new Card('q','s'), new Card('k','c'), new Card('k','d'), new Card('k','h'), new Card('k','s'), new Card('a','c'), new Card('a','d'), new Card('a','h'), new Card('a','s')];
@@ -173,17 +173,21 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', function($
 	$scope.verify_count = function(guess) {
 		// todo add autofocus
 		// todo add timeout before verify screen pops up
-		if (guess == -$scope.get_count($scope.cards)) { // important comparison, since guess is a string
+		if (guess == -$scope.get_count($scope.cards)) {
 			$scope.count_right = true;
-			// todo try to set timeout here
-			// $timeout(function() {$scope.count_right = false;}, 1000);
-			$scope.count_wrong = false;
-			$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+
+			$timeout(function() {
+				$scope.count_right = false;
+				$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+			}, 1000);
+			
 		}
 		else {
-			$scope.count_right = false;
 			$scope.count_wrong = true;
-			$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+			$timeout(function() {
+				$scope.count_wrong = false;
+				$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+			}, 1000);
 		}
 	};
 
