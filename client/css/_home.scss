@@ -9,8 +9,10 @@
 		display: block;
 		position: relative;
 		left: -15px;
-		background: linear-gradient(white 0%, $trans_gray 50%, white 100%);
-		background: -moz-linear-gradient(bottom, white 0%, $trans_gray 50%, white 100%);
+		background: -webkit-linear-gradient(white 0%, darken($trans_gray, 20%) 50%, white 100%);
+		background: -moz-linear-gradient(bottom, white 0%, darken($trans_gray, 20%) 50%, white 100%);
+		background: -o-linear-gradient(bottom, white 0%, darken($trans_gray, 20%) 50%, white 100%);
+		background: linear-gradient(bottom, white 0%, darken($trans_gray, 20%) 50%, white 100%);
 	}
 
 
@@ -71,7 +73,7 @@
 				position: absolute;
 				bottom: 0px;
 				left: ($p_bottom_width - $button_width)/2;
-				box-shadow: 0 2px 0 $trans_gray;
+				
 
 				button {
 					width: $button_width;
@@ -79,9 +81,9 @@
 					background-color: transparent;
 					border: 2px solid black;
 					padding: 0;
-					@include border_radius(10px);
+					@include border-radius(10px);
 					@include transition((background-color 0.35s ease, color 0.35s ease));
-
+					@include box-shadow((0 0 2px $trans_black));
 
 					&:hover {
 						background-color: $main_red;
@@ -109,6 +111,7 @@
 	min-height: 375px;
 	width: $full;
 	background: url('../img/blackjack_table.jpg') no-repeat center center;
+	background-size: cover;
 	font-family: 'Josefin Sans', sans-serif;
 	font-variant: small-caps;
 	// text-shadow: 1px 1px 0 $trans_black;

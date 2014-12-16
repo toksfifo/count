@@ -1,3 +1,18 @@
+.card_container {
+	// margin-left: auto;
+	// margin-right: auto;
+	text-align: center;
+	height: $card_height;
+	width: $full;
+	// border: $black;
+	@include vertical-align();
+}
+
+#count {
+	height: 100vh;
+	position: relative;
+}
+
 #start, #end {
 	@include screen($main_gray);
 }
@@ -5,3 +20,4 @@
 #verify {
 	@include screen($trans_gray);
 }
+

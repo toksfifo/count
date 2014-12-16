@@ -1,5 +1,6 @@
-$card_height: 243.5px/2;
-$card_width: 167.5px/2;
+$card_scale: 0.75;
+$card_height: 243.5px * $card_scale;
+$card_width: 167.5px * $card_scale;
 $main_gray: rgba(192, 192, 192, 1);
 $trans_gray: rgba(192, 192, 192, 0.5);
 $trans_black: rgba(0,0,0,0.8);

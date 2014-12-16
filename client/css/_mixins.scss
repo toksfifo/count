@@ -69,6 +69,13 @@
 	background-position: (-$card_width * $width) (-$card_height * $height);
 }
 
+@mixin box-shadow($stuff) {
+	-webkit-box-shadow: $stuff;
+	-moz-box-shadow: $stuff;
+	-o-box-shadow: $stuff;
+	box-shadow: $stuff;
+}
+
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
@@ -83,4 +90,13 @@
 	position: fixed;
 	top: 0px;
 	width: 100vw;
+	z-index: 1;
+}
+
+@mixin vertical-align {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }

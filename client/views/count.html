@@ -41,9 +41,10 @@
 
 	<p ng-show='count_wrong'>You got the count wrong :(</p>
 
-	<div ng-repeat='card in current_deal track by $index'>
-		<div card></div card>
+	<div class="card_container">
+		<card ng-repeat='card in current_deal track by $index'></card>
 	</div>
+	
 
 </div>
 

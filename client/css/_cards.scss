@@ -1,10 +1,11 @@
 .card { 
-	background-image: url('../img/cards_noborder_small.png');
+	background-image: url('../img/cards_noborder_75.png');
 	border: 1px solid black;
-	@include border-radius(5px);
-	float: left;
+	display: inline-block;
 	height: $card_height;
 	width: $card_width;
+	@include border-radius(5px);
+	@include box-shadow((0 0 3px $trans_black));
 }
 
 .card.back {
