@@ -93,10 +93,26 @@
 	z-index: 1;
 }
 
-@mixin vertical-align {
+@mixin vertical-align() {
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+
+@mixin button($height, $width) {
+	width: $width;
+	height: $height;
+	background-color: transparent;
+	border: 2px solid black;
+	padding: 0;
+	@include border-radius(10px);
+	@include transition((background-color 0.35s ease, color 0.35s ease));
+	@include box-shadow((0 0 2px $trans_black));
+
+	&:hover {
+		background-color: $main_red;
+		color: white;
+	}
 }

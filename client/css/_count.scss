@@ -11,13 +11,53 @@
 #count {
 	height: 100vh;
 	position: relative;
+	font-size: 20px;
+	text-align: center;
+	top: 0;
+
+	#start {
+		@include screen(white);
+
+		form {
+			margin-top: 150px;
+
+			button {
+				@include button(35px, 100px);
+			}
+		}
+	}
+
+	#end {
+		@include screen($main_gray);
+	}
+
+	#verify {
+		@include screen($trans_black);
+
+		form {
+			margin-top: 100px;
+		}
+	}
 }
 
-#start, #end {
-	@include screen($main_gray);
+#darken_secondary {
+	background: $trans_black;
+	height: $nav_height;
+	width: $full;
 }
 
-#verify {
-	@include screen($trans_gray);
+#top_secondary {
+	// border: $white;
+	color: white;
+	height: $nav_height;
+	// min-height: 375px;
+	width: $full;
+	background: url('../img/blackjack_table.jpg') no-repeat center center;
+	background-size: cover;
+	font-family: 'Josefin Sans', sans-serif;
+	font-variant: small-caps;
+	position: fixed;
+	z-index: 2;
 }
+
 

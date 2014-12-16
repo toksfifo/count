@@ -1,3 +1,16 @@
+<div id="top_secondary">
+	<div id="darken_secondary">
+		<div id="nav">
+			<a href="#/"><div id="logo_text">CO &nbsp NT</div><div id="logo"></div></a>
+			<div id="links">
+				<a href="">STRATEGY</a>
+				<a href="#/count">COUNT</a>
+				<a href="">PLAY</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id='count'>
 	
 	<div id="start" ng-show="start">
@@ -22,7 +35,7 @@
 		</form>
 	</div>
 	
-	cards left in deck: {{ cards.length }}<span ng-show='deck.number'>/{{ deck.number*52 }}</span>
+	<!-- cards left in deck: {{ cards.length }}<span ng-show='deck.number'>/{{ deck.number*52 }}</span> -->
 
 	<div id="verify" ng-show='verify'>
 		<form ng-submit='verify_count(count_guess)'>
@@ -37,9 +50,9 @@
 
 	
 
-	<p ng-show='count_right'>You got the count right!</p>
+	<!-- <p ng-show='count_right'>You got the count right!</p> -->
 
-	<p ng-show='count_wrong'>You got the count wrong :(</p>
+	<!-- <p ng-show='count_wrong'>You got the count wrong :(</p> -->
 
 	<div class="card_container">
 		<card ng-repeat='card in current_deal track by $index'></card>

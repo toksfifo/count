@@ -76,19 +76,7 @@
 				
 
 				button {
-					width: $button_width;
-					height: $button_height;
-					background-color: transparent;
-					border: 2px solid black;
-					padding: 0;
-					@include border-radius(10px);
-					@include transition((background-color 0.35s ease, color 0.35s ease));
-					@include box-shadow((0 0 2px $trans_black));
-
-					&:hover {
-						background-color: $main_red;
-						color: white;
-					}
+					@include button($button_height, $button_width);
 				}
 			}
 		}
