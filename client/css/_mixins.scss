@@ -109,7 +109,7 @@
 	padding: 0;
 	@include border-radius(10px);
 	@include transition((background-color 0.35s ease, color 0.35s ease));
-	@include box-shadow((0 0 2px $trans_black));
+	@include box-shadow((0 0 4px 1px transparentize($trans_black, 0.5)));
 
 	&:hover {
 		background-color: $main_red;

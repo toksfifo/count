@@ -105,6 +105,8 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 	$scope.deck_number_options = [1,2,3,4,5,6,7,8];
 	$scope.freq_options = ['randomly', 'once at middle', 'never'];
 
+	$scope.count_options = [7,6,5,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7];
+
 	$scope.create_deck = function(number_of_decks) {
 		$scope.deck = new Deck(number_of_decks);
 		$scope.cards = $scope.deck.cards;
@@ -122,7 +124,6 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 			}
 		}
 		return $scope.current_deal;
-		// todo focus on count_guess
 	};
 
 	$scope.deal_continuous = function(number_of_cards_per_time, time_per_cards, number_of_decks, count_freq) {
@@ -138,14 +139,15 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 	};
 
 	$scope.continue_deal = function(number_of_cards_per_time, time_per_cards, split_array) {
-		$scope.verify = false;
 		start_deal = $interval(function() {
 			iterations++;
 			// console.log(iterations);
 			$scope.deal(number_of_cards_per_time);
 			$scope.remove_shown_cards(number_of_cards_per_time);
 			if (split_array.indexOf(iterations) > -1) {
-				$scope.pause_deal();
+				$timeout(function() {
+					$scope.pause_deal();
+				}, (time_per_cards*1000)-10); // gives user a chance to see the cards before screen appears
 			}
 			if ($scope.current_deal.length == 0) {
 				$scope.stop_deal();
@@ -155,7 +157,6 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 
 	$scope.pause_deal = function() {
 		$interval.cancel(start_deal);
-		$scope.count_guess = '';
 		$scope.verify = true;
 	};
 
@@ -171,10 +172,9 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 	};
 
 	$scope.verify_count = function(guess) {
-		// todo add autofocus
-		// todo add timeout before verify screen pops up
-		if (guess == -$scope.get_count($scope.cards)) {
+		if (guess == -$scope.get_count($scope.cards)) { // count is right
 			$scope.count_right = true;
+			$scope.verify = false;
 
 			$timeout(function() {
 				$scope.count_right = false;
@@ -182,11 +182,14 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 			}, 1000);
 			
 		}
-		else {
+		else { // count is wrong
 			$scope.count_wrong = true;
+			$scope.verify = false;
+
 			$timeout(function() {
 				$scope.count_wrong = false;
-				$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+				// $scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+				$scope.stop_deal();
 			}, 1000);
 		}
 	};

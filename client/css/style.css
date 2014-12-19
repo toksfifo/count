@@ -8,10 +8,10 @@
   -moz-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8); }
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.85);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.85);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.85); }
 
 .card.back {
   background-position: -251.25px -730.5px; }
@@ -212,10 +212,10 @@
         -moz-transition: background-color 0.35s ease, color 0.35s ease;
         -o-transition: background-color 0.35s ease, color 0.35s ease;
         transition: background-color 0.35s ease, color 0.35s ease;
-        -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-        -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-        -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.8); }
+        -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+        -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+        -o-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35); }
         #count #start form button:hover {
           background-color: red;
           color: white; }
@@ -242,25 +242,50 @@
       -moz-transition: background-color 0.35s ease, color 0.35s ease;
       -o-transition: background-color 0.35s ease, color 0.35s ease;
       transition: background-color 0.35s ease, color 0.35s ease;
-      -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8); }
+      -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      -o-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35); }
       #count #end button:hover {
         background-color: red;
         color: white; }
   #count #verify {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     height: 100vh;
     left: 0px;
     position: fixed;
     top: 0px;
     width: 100vw;
     z-index: 1; }
-    #count #verify form {
-      margin-top: 100px; }
+    #count #verify button {
+      margin-left: 20px;
+      margin-top: 150px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: 2px solid black;
+      padding: 0;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -o-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-transition: background-color 0.35s ease, color 0.35s ease;
+      -moz-transition: background-color 0.35s ease, color 0.35s ease;
+      -o-transition: background-color 0.35s ease, color 0.35s ease;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      -o-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid black; }
+      #count #verify button:hover {
+        background-color: red;
+        color: white; }
+    #count #verify button:first-child {
+      margin-left: 0; }
   #count #green_screen {
-    background-color: rgba(0, 255, 128, 0.5);
+    background-color: rgba(0, 255, 128, 0.8);
     height: 100vh;
     left: 0px;
     position: fixed;
@@ -268,7 +293,7 @@
     width: 100vw;
     z-index: 1; }
   #count #red_screen {
-    background-color: rgba(217, 58, 50, 0.5);
+    background-color: rgba(255, 20, 10, 0.8);
     height: 100vh;
     left: 0px;
     position: fixed;
@@ -276,25 +301,20 @@
     width: 100vw;
     z-index: 1; }
 
-#darken_secondary {
-  background: rgba(0, 0, 0, 0.8);
-  height: 75px;
-  width: 100%; }
-
 #top_secondary {
   color: white;
   height: 75px;
   width: 100%;
-  background: url("../img/blackjack_table.jpg") no-repeat center center;
+  background-color: #1e1e1e;
   background-size: cover;
   font-family: 'Josefin Sans', sans-serif;
   font-variant: small-caps;
   position: fixed;
   z-index: 2;
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
-  -o-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8); }
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.85);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.85);
+  -o-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.85); }
 
 #bottom {
   height: 700px;
@@ -384,16 +404,16 @@
           -moz-transition: background-color 0.35s ease, color 0.35s ease;
           -o-transition: background-color 0.35s ease, color 0.35s ease;
           transition: background-color 0.35s ease, color 0.35s ease;
-          -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-          -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-          -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.8); }
+          -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+          -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+          -o-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35); }
           #bottom .go_columns .paragraphs .but button:hover {
             background-color: red;
             color: white; }
 
 #darken {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   height: 100%;
   width: 100%; }
 

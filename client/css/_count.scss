@@ -39,25 +39,33 @@
 	#verify {
 		@include screen($trans_black);
 
-		form {
-			margin-top: 100px;
+		button {
+			margin-left: 20px;
+			margin-top: 150px;
+			@include button(40px, 40px);
+			background-color: transparentize(white, 0.2);
+			border: 1px solid black;
+		}
+
+		button:first-child {
+			margin-left: 0;
 		}
 	}
 
 	#green_screen {
-		@include screen(transparentize($verify_green, 0.5));
+		@include screen(transparentize($verify_green, 0.2));
 	}
 
 	#red_screen {
-		@include screen(transparentize($verify_red, 0.5));
+		@include screen(transparentize($verify_red, 0.2));
 	}
 }
 
-#darken_secondary {
-	background: $trans_black;
-	height: $nav_height;
-	width: $full;
-}
+// #darken_secondary {
+// 	background: $trans_black;
+// 	height: $nav_height;
+// 	width: $full;
+// }
 
 #top_secondary {
 	// border: $white;
@@ -65,7 +73,8 @@
 	height: $nav_height;
 	// min-height: 375px;
 	width: $full;
-	background: url('../img/blackjack_table.jpg') no-repeat center center;
+	// background: url('../img/blackjack_table.jpg') no-repeat center center;
+	background-color: $main_black;
 	background-size: cover;
 	font-family: 'Josefin Sans', sans-serif;
 	font-variant: small-caps;

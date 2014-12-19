@@ -1,12 +1,10 @@
 <div id="top_secondary">
-	<div id="darken_secondary">
-		<div id="nav">
-			<a href="#/"><div id="logo_text">CO &nbsp NT</div><div id="logo"></div></a>
-			<div id="links">
-				<a href="">STRATEGY</a>
-				<a href="#/count">COUNT</a>
-				<a href="">PLAY</a>
-			</div>
+	<div id="nav">
+		<a href="#/"><div id="logo_text">CO &nbsp NT</div><div id="logo"></div></a>
+		<div id="links">
+			<a href="">STRATEGY</a>
+			<a href="#/count">COUNT</a>
+			<a href="">PLAY</a>
 		</div>
 	</div>
 </div>
@@ -38,10 +36,11 @@
 	<!-- cards left in deck: {{ cards.length }}<span ng-show='deck.number'>/{{ deck.number*52 }}</span> -->
 
 	<div id="verify" ng-show='verify'>
-		<form ng-submit='verify_count(count_guess)'>
+		<!-- <form ng-submit='verify_count(count_guess)'>
 			<input type='text' ng-model='count_guess' placeholder='count?'>
 			<button type="submit">Verify Count</button>
-		</form>
+		</form> -->
+		<button ng-repeat="number in count_options" ng-click="verify_count(number)">{{ number }}</button>
 	</div>
 
 	<div id="green_screen" ng-show="count_right"></div>
