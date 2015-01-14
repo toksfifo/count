@@ -1,1 +1,1 @@
-var count_app = angular.module('count_app', ['firebase', 'ngRoute']);
+var count_app = angular.module('count_app', ['firebase', 'ngRoute', 'ngAnimate']);

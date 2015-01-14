@@ -22,9 +22,13 @@
 			margin-top: 150px;
 
 			button {
-				@include button(35px, 100px);
+				display: block;
+				margin: 100px auto auto auto;
+				@include button($button_height, $button_width);
 			}
 		}
+
+
 	}
 
 	#end {
@@ -43,8 +47,9 @@
 			margin-left: 20px;
 			margin-top: 150px;
 			@include button(40px, 40px);
-			background-color: transparentize(white, 0.2);
-			border: 1px solid black;
+			// background-color: transparentize(white, 0.2);
+			background-color: white;
+			// border: 1px solid black;
 		}
 
 		button:first-child {
@@ -52,13 +57,54 @@
 		}
 	}
 
-	#green_screen {
-		@include screen(transparentize($verify_green, 0.2));
+	// VERIFY TRANSITIONS
+	#verify {
+		opacity: 1;
 	}
 
+	#verify.ng-hide {
+		opacity: 0;
+	}
+
+	#verify.ng-hide-remove {
+		@include transition((0.5s ease all));
+	}
+
+
+	// GREEN SCREEN TRANSITIONS
+	#green_screen {
+		@include screen(transparentize($verify_green, 0.2));
+		opacity: 1;
+	}
+
+	#green_screen.ng-hide {
+		opacity: 0;
+	}
+
+	#green_screen.ng-hide-add {
+		@include transition((1s ease all));
+	}
+
+
+	// RED SCREEN TRANSITIONS
 	#red_screen {
 		@include screen(transparentize($verify_red, 0.2));
+		opacity: 1;
 	}
+
+	#red_screen.ng-hide {
+		opacity: 0;
+	}
+
+	#red_screen.ng-hide-add {
+		@include transition((1s ease all));
+	}
+
+	// #red_screen.ng-hide-remove {
+	// 	@include transition((1s ease all));
+	// }
+
+
 }
 
 // #darken_secondary {

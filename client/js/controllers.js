@@ -178,8 +178,10 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 
 			$timeout(function() {
 				$scope.count_right = false;
+			}, 500);
+			$timeout(function() {
 				$scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
-			}, 1000);
+			}, 1500);
 			
 		}
 		else { // count is wrong
@@ -189,8 +191,11 @@ count_app.controller('CardCtrl', ['$scope', '$firebase', '$interval', '$timeout'
 			$timeout(function() {
 				$scope.count_wrong = false;
 				// $scope.continue_deal($scope.number_of_cards_per_time, $scope.time_per_cards, $scope.split_array);
+				// $scope.stop_deal();
+			}, 500);
+			$timeout(function() {
 				$scope.stop_deal();
-			}, 1000);
+			}, 1500)
 		}
 	};
 

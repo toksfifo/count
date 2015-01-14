@@ -199,8 +199,10 @@
     #count #start form {
       margin-top: 150px; }
       #count #start form button {
-        width: 100px;
-        height: 35px;
+        display: block;
+        margin: 100px auto auto auto;
+        width: 150px;
+        height: 50px;
         background-color: transparent;
         border: 2px solid black;
         padding: 0;
@@ -277,13 +279,21 @@
       -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
       -o-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
       box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.35);
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid black; }
+      background-color: white; }
       #count #verify button:hover {
         background-color: red;
         color: white; }
     #count #verify button:first-child {
       margin-left: 0; }
+  #count #verify {
+    opacity: 1; }
+  #count #verify.ng-hide {
+    opacity: 0; }
+  #count #verify.ng-hide-remove {
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
+    transition: 0.5s ease all; }
   #count #green_screen {
     background-color: rgba(0, 255, 128, 0.8);
     height: 100vh;
@@ -291,7 +301,15 @@
     position: fixed;
     top: 0px;
     width: 100vw;
-    z-index: 1; }
+    z-index: 1;
+    opacity: 1; }
+  #count #green_screen.ng-hide {
+    opacity: 0; }
+  #count #green_screen.ng-hide-add {
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    transition: 1s ease all; }
   #count #red_screen {
     background-color: rgba(255, 20, 10, 0.8);
     height: 100vh;
@@ -299,7 +317,15 @@
     position: fixed;
     top: 0px;
     width: 100vw;
-    z-index: 1; }
+    z-index: 1;
+    opacity: 1; }
+  #count #red_screen.ng-hide {
+    opacity: 0; }
+  #count #red_screen.ng-hide-add {
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    transition: 1s ease all; }
 
 #top_secondary {
   color: white;
