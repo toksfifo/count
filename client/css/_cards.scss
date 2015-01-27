@@ -4,6 +4,7 @@
 	display: inline-block;
 	height: $card_height;
 	width: $card_width;
+	// opacity: 0;
 	@include border-radius(5px);
 	@include box-shadow((0 0 3px $trans_black));
 }
