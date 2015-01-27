@@ -135,6 +135,9 @@
 }
 
 #scroll_circle {
+	@media (max-width: $media_max) {
+		display: none;
+	}
 	bottom: $scroll_width + 50px;
 	width: $scroll_width;
 	height: $scroll_width;
