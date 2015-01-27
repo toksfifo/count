@@ -502,6 +502,9 @@
   -moz-transition: background-color 0.35s ease;
   -o-transition: background-color 0.35s ease;
   transition: background-color 0.35s ease; }
+  @media (max-width: 760px) {
+    #scroll_circle {
+      display: none; } }
   #scroll_circle:hover {
     background-color: red; }
   #scroll_circle #scroll {
